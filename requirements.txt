@@ -1,0 +1,4 @@
+pillow
+pygame
+mutagen
+pydub
