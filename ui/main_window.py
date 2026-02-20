@@ -1,9 +1,7 @@
 import io
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
-
 from PIL import Image, ImageTk
-
 
 class MainWindow(tk.Tk):
     def __init__(self, controller):
@@ -228,7 +226,6 @@ class MainWindow(tk.Tk):
     def _on_fx_release(self, _evt):
         if not self.controller.state.is_loaded:
             return
-        self.controller.apply_fx_async()
 
     def _tick_ui(self):
         self.controller.tick()
@@ -254,9 +251,6 @@ class MainWindow(tk.Tk):
             self.destroy()
     
     def _schedule_apply_fx(self):
-        """
-        Debounce: if user presses keys quickly, only render once after they pause.
-        """
         if not self.controller.state.is_loaded:
             return
 
@@ -267,7 +261,6 @@ class MainWindow(tk.Tk):
 
     def _apply_fx_now(self):
         self._apply_fx_after_id = None
-        self.controller.apply_fx_async()
 
     def _nudge_tempo(self, direction: int):
         if not self.controller.state.is_loaded:

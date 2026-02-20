@@ -1,4 +1,6 @@
-pillow
-pygame
 mutagen
-pydub
+numpy
+pillow
+pylibrb
+soundfile
+sounddevice

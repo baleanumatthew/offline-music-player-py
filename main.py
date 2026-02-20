@@ -1,10 +1,10 @@
-from core.audio_engine import AudioEngine
+from core.rt_audio_engine import RealTimeAudioEngine
 from controllers.player_controller import PlayerController
 from ui.main_window import MainWindow
 
 
 def main():
-    engine = AudioEngine()
+    engine = RealTimeAudioEngine(blocksize=2048)
     controller = PlayerController(engine)
     app = MainWindow(controller)
     app.mainloop()
