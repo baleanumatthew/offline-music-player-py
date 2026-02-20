@@ -247,20 +247,12 @@ class RealTimeAudioEngine:
         )
         time_ratio = 1.0 / max(1e-6, self._tempo)
 
-        st = None
-
-        try:
-            st = RubberBandStretcher(
-                sample_rate=self._sr,
-                channels=self._ch,
-                options=opts,
-                initial_time_ratio=time_ratio,
+        st = RubberBandStretcher(
+            sample_rate=self._sr,
+            channels=self._ch,
+            options=opts,
+            initial_time_ratio=time_ratio
             )
-        except TypeError:
-            st = None
-
-        if st is None:
-            st = RubberBandStretcher(self._sr, self._ch, opts, time_ratio)  # type: ignore
 
         if hasattr(st, "set_max_process_size"):
             try:
