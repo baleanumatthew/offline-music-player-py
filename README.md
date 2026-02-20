@@ -1,5 +1,10 @@
-An offline python music player with tempo and pitch shifting
+An offline python music player with real-time tempo and pitch shifting
 
-Needs rubberband CLI installed and added to path (Getting rid of this soon!)
+External Dependencies
+1. [FFmpeg](https://www.ffmpeg.org)
 
-Currently needs to process the whole song to apply change (Also fixing this soon!)
+Installation Instructions
+1. ```pip install -r requirements.txt```
+
+Execution Instructions
+1. ```python ./main.py```
