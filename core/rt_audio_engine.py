@@ -369,7 +369,7 @@ class RealTimeAudioEngine:
                     out = self._from_rb_locked(rb_out)
                     self._append_out_locked(out)
 
-    def _callback(self, outdata, frames):
+    def _callback(self, outdata, frames, time_info, status):
         try:
             with self._lock:
                 if (not self._playing) or self._paused or self._audio is None or self._stretcher is None:
