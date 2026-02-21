@@ -8,6 +8,7 @@
 [Python 3.13.5](https://www.python.org/downloads/release/python-3135/)
 
 ### Instructions
+Put your ffmpeg executable at the root of your project folder
 ```
    git clone https://github.com/baleanumatthew/offline-music-player-py
    python -m venv env
