@@ -9,8 +9,8 @@ class MainWindow(tk.Tk):
         self.controller = controller
 
         self.title("Music Player")
-        self.geometry("540x420")
-        self.resizable(True, True)
+        self.geometry("640x480")
+        self.resizable(False, False)
 
         self._ignore_scale = False
         self._scrubbing = False
