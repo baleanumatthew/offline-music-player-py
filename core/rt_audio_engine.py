@@ -9,8 +9,6 @@ import sounddevice as sd
 import soundfile as sf
 import pylibrb
 from pylibrb import RubberBandStretcher, Option
-import sys
-import os
 
 
 @dataclass
@@ -38,7 +36,7 @@ def _load_any_audio_ffmpeg(
         pass
 
     cmd = [
-        _ffmpeg_exe(),
+        "ffmpeg",
         "-hide_banner",
         "-loglevel", "error",
         "-i", path,
@@ -394,19 +392,3 @@ class RealTimeAudioEngine:
         except Exception:
             outdata[:] = 0
             self._log_rt_error(traceback.format_exc())
-
-def _ffmpeg_exe() -> str:
-    if getattr(sys, "frozen", False):
-        base = getattr(sys, "_MEIPASS", os.path.dirname(sys.executable))
-        bundled = os.path.join(base, "ffmpeg.exe")
-        if os.path.exists(bundled):
-            return bundled
-        bundled2 = os.path.join(os.path.dirname(sys.executable), "ffmpeg.exe")
-        if os.path.exists(bundled2):
-            return bundled2
-        return "ffmpeg"
-
-    local = os.path.join(os.path.dirname(os.path.dirname(__file__)), "ffmpeg.exe")
-    if os.path.exists(local):
-        return local
-    return "ffmpeg"
