@@ -256,15 +256,18 @@ class RealTimeAudioEngine:
             initial_time_ratio=time_ratio
             )
 
-        if hasattr(st, "set_max_process_size"):
-            try:
-                st.set_max_process_size(self.blocksize)
-                st.formant_scale = pylibrb.AUTO_FORMANT_SCALE
-            except Exception:
-                pass
+        try:
+            st.set_max_process_size(self.blocksize) 
+        except Exception:
+            pass
 
         try:
             st.time_ratio = time_ratio
+        except Exception:
+            pass
+
+        try:
+            st.formant_scale = pylibrb.AUTO_FORMANT_SCALE
         except Exception:
             pass
 
